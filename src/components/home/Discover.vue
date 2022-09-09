@@ -24,7 +24,6 @@ import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 import { useHomeStore } from '../../stores/homeStore'
 import marsCamera from '../../utils/discovery'
-import MarsRover from '../home/MarsRover.vue'
 
 const { fetchLatestApod } = useHomeStore()
 const router = useRouter()

@@ -27,7 +27,7 @@ export const useHomeStore = defineStore('homeStore',{
             }
 
         },
-        multipleApod(){
+        async multipleApod(){
             console.log("hehe")
         }
     }

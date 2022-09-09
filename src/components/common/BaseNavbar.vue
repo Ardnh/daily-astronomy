@@ -38,7 +38,7 @@
         <div class="hidden sm:block sm:ml-6">
           <div class="flex space-x-4">
             <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-            <router-link to="/" class="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium">HOME</router-link>
+            <router-link to="/" class="text-white px-3 py-2 rounded-md text-sm font-medium">HOME</router-link>
 
             <router-link to="/discovery" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">DISCOVERY</router-link>
 
@@ -46,11 +46,6 @@
 
             <router-link to="/about" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">ABOUT</router-link>
           </div>
-        </div>
-        <div class="ml-auto">
-          <form class="">
-            <input type="email" class="form-input px-3 rounded-md ring-1 ring-white border-0 bg-slate-100 py-1" placeholder="ex: saturn">
-          </form>
         </div>
       </div>
     </div>
@@ -88,6 +83,11 @@ const handleSelect = (key, keyPath) => {
 
 </script>
 
-<style>
+<style scoped>
+
+.router-link-active {
+  background-color: #111827;
+
+}
 
 </style>

@@ -6,12 +6,16 @@
         <section class="">
             <Discover/>
         </section>
+        <section>
+            <NearObjects/>
+        </section>
     </div>
 </template>
 
 <script setup>
 import Hero from '../components/home/Hero.vue'
 import Discover from '../components/home/Discover.vue'
+import NearObjects from '../components/home/NearObjects.vue'
 import { useHomeStore } from '../stores/homeStore'
 
 const { fetchLatestApod } = useHomeStore()

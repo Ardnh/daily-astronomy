@@ -1,5 +1,5 @@
 <template>
-  <h1>Hello from mars rover photo</h1>
+  <h1>Hello from near objects</h1>
 </template>
 
 <script>

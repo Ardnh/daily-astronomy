@@ -1,5 +1,10 @@
 <template>
-  <h1>Hello from Discovery</h1>
+  <div>
+    this is for form
+  </div>
+  <div>
+    this is for showing content
+  </div>
 </template>
 
 <script>
