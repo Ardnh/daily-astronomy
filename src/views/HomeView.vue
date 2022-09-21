@@ -7,7 +7,10 @@
             <Discover/>
         </section>
         <section>
-            <NearObjects/>
+            <RandomNews/>
+        </section>
+        <section>
+            <Search/>
         </section>
     </div>
 </template>
@@ -15,11 +18,14 @@
 <script setup>
 import Hero from '../components/home/Hero.vue'
 import Discover from '../components/home/Discover.vue'
-import NearObjects from '../components/home/NearObjects.vue'
+import RandomNews from '../components/home/RandomNews.vue'
+import Search from '../components/home/Search.vue'
 import { useHomeStore } from '../stores/homeStore'
 
-const { fetchLatestApod } = useHomeStore()
+const { fetchLatestApod, fetchRandomNews } = useHomeStore()
 fetchLatestApod()
+fetchRandomNews()
+
 </script>
 
 <style>

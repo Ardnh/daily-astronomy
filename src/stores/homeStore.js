@@ -6,11 +6,11 @@ export const useHomeStore = defineStore('homeStore',{
         base_url: 'https://api.nasa.gov',
         api_key: 'j8788roS1kq6VUnNmqn6dicfx9Mkn0QFOaodaIuU',
         latestApod: {},
-        multipleApod: []
+        randomNews: []
     }),
     getters: {
         getLatestApod: (state) => state.latestApod,
-        getMultipleApod: (state) => state.multipleApod
+        getRandomNews: (state) => state.randomNews
     },
     actions: {
         async fetchLatestApod(){
@@ -27,8 +27,18 @@ export const useHomeStore = defineStore('homeStore',{
             }
 
         },
-        async multipleApod(){
-            console.log("hehe")
+        async fetchRandomNews(){
+            this.randomNews = []
+            const url = `${ this.base_url }/planetary/apod?api_key=${ this.api_key }&count=5`
+            try {
+                await axios.get(url)
+                        .then( res => {
+                            this.randomNews = res.data
+                        })
+                        .catch(err => console.log(err))
+            } catch (error) {
+                console.log(err)
+            }
         }
     }
 })

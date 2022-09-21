@@ -38,7 +38,7 @@
         <div class="hidden sm:block sm:ml-6">
           <div class="flex space-x-4">
             <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-            <router-link to="/" class="text-white px-3 py-2 rounded-md text-sm font-medium">HOME</router-link>
+            <router-link to="/" class="hover:bg-gray-700 hover:text-white text-white px-3 py-2 rounded-md text-sm font-medium">HOME</router-link>
 
             <router-link to="/discovery" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">DISCOVERY</router-link>
 

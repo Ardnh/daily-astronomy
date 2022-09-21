@@ -18,7 +18,7 @@
                 <div v-if="latestApod.media_type === 'image'" @click="goToDetail" :style="`background-image: url(${ latestApod.url }); border-radius:0.75rem`">
                     <div class="p-10 w-full cursor-pointer h-full rounded-xl" style="background: rgba(15, 23, 42, .8)">
                         <div>
-                            <div class="text-3xl pt-2 text-slate-300 font-medium font-montserrat">Astronomy Picture of The Day (APOD)</div>
+                            <div class="text-3xl pt-2 text-slate-300 font-medium font-montserrat">Astronomy Picture of The Day</div>
                             <div class="mt-36 text-3xl text-gray-200 font-bold font-montserrat">{{ latestApod.title }}</div>
                             <div class="text-base text-gray-200 font-light font-montserrat">{{ latestApod.date }}</div>
                         </div>
