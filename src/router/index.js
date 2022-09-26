@@ -4,6 +4,7 @@ import Discovery from "../views/DiscoveryView.vue"
 import Gallery from "../views/GalleryView.vue"
 import About from "../views/AboutView.vue"
 import Detail from "../views/DetailView.vue"
+import NotFoundView from "../views/NotFoundView.vue"
 
 const routes = [
     {
@@ -27,9 +28,14 @@ const routes = [
         component: About
     },
     {
-        path: '/detail',
+        path: '/detail/:slug',
         name: 'detail',
         component: Detail
+    },
+    {
+        path: '/:pathMatch(.*)*',
+        name: 'notFound',
+        component: NotFoundView
     }
 ]
 

@@ -3,24 +3,24 @@
 
     <div class="bg-white">
       <el-image
-          v-if="latestApod.media_type === 'image'"
+          v-if="getDetailNews.media_type === 'image'"
           class="rounded-lg h-96 w-full object-cover"
-          :src="latestApod.url"
-          :preview-src-list="[latestApod.url]"
+          :src="getDetailNews.url"
+          :preview-src-list="[getDetailNews.url]"
           fit="cover"
         />
       <!-- <img class="rounded-lg h-96 w-full object-cover" v-if="latestApod.media_type === 'image'" :src="latestApod.url"> -->
-      <iframe v-else class="w-full rounded-lg" height="500" :src="latestApod.url" frameborder="0"></iframe>
+      <iframe v-else class="w-full rounded-lg" height="500" :src="getDetailNews.url" frameborder="0"></iframe>
     </div>
 
-    <div class="text-sm text-gray-500 mt-10 font-medium font-montserrat">{{ latestApod.date }}</div>
+    <div class="text-sm text-gray-500 mt-10 font-medium font-montserrat">{{ getDetailNews.date }}</div>
 
     <div class="text-3xl my-3 text-gray-700 font-bold font-montserrat">
-      {{ latestApod.title }}
+      {{ getDetailNews.title }}
     </div>
 
     <div class="text-lg text-justify text-gray-800 font-medium font-montserrat">
-      {{ latestApod.explanation }}
+      {{ getDetailNews.explanation }}
     </div>
 
   </div>
@@ -32,14 +32,7 @@ import { onBeforeMount} from 'vue'
 import { storeToRefs } from 'pinia'
 import { useHomeStore } from '../stores/homeStore'
 
-const { latestApod } = storeToRefs(useHomeStore())
-const { fetchLatestApod } = useHomeStore()
-
-
-onBeforeMount(() => 
-  Object.keys(latestApod.value).length === 0 ? fetchLatestApod() : ''
-)
-
+const { getDetailNews } = storeToRefs(useHomeStore())
 
 </script>
 

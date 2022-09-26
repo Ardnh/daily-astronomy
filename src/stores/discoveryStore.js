@@ -3,7 +3,7 @@ import axios from 'axios'
 
 export const useDiscoveryStore = defineStore('useDiscovery', {
     state: () => ({
-
+        searchInput: ''
     }),
     getters: {
 

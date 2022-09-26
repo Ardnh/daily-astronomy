@@ -7,8 +7,8 @@
         <div class="ml-3 font-nunito font-bold text-sm">refresh</div>
       </div>
     </div>
-    <div class="my-7 flex flex-wrap">
-      <div v-for="(item, i) in randomNews" :key="i" class="w-60 h-80 object-cover m-2" :style="`background-image: url( ${ item.url } ); border-radius:10px;`">
+    <div class="my-7 flex flex-wrap justify-center">
+      <div v-for="(item, i) in getRandomNews" :key="i" @click="showDetailView(i, item.title)" class="w-56 cursor-pointer h-80 object-cover m-2" :style="`background-image: url( ${ item.url } ); border-radius:10px;`">
         <div class="w-full h-full" style="background: rgba(15, 23, 42, .8); border-radius: 10px">
           <div class="px-5 mb-3 pt-48 text-lg text-gray-200">
             {{ item.title }}
@@ -21,11 +21,20 @@
 
 <script setup>
 import { ref } from "vue"
+import { useRouter } from 'vue-router'
 import { storeToRefs } from 'pinia'
 import { useHomeStore } from '../../stores/homeStore'
 
+const router = useRouter()
 const refreshIcon = new URL('../../assets/refresh.svg', import.meta.url).href
-const { randomNews } = storeToRefs(useHomeStore())
+const { goToDetail } = useHomeStore()
+const { getRandomNews } = storeToRefs(useHomeStore())
+
+const showDetailView = (i, title) => {
+  let titleModification = title.toLowerCase().replace(/ /g, '-').replace(/[^\w-]+/g, '')
+  goToDetail(i)
+  router.push({ name: 'detail', params: { slug: titleModification }})
+}
 
 </script>
 
