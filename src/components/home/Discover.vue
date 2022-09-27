@@ -8,7 +8,7 @@
             <div 
               v-for="item in marsCameraList" 
               :key="item.id"
-              @click="showDetail()"
+              @click="showDetail(item.type)"
               class="hover:bg-gray-700 shadow-xl cursor-pointer bg-gray-800 px-4 py-5 w-72 h-auto rounded-lg m-2"
             >
                 <div class="text-lg font-bold text-slate-200 mb-8 mt-3 font-montserrat">{{ item.name }}</div>
@@ -25,12 +25,12 @@ import { useRouter } from 'vue-router'
 import { useHomeStore } from '../../stores/homeStore'
 import marsCamera from '../../utils/discovery'
 
-const { fetchLatestApod } = useHomeStore()
+const { roverCamera } = useHomeStore()
 const router = useRouter()
 const marsCameraList = ref(marsCamera)
 
-const goToDetail = (raw) => {
-  console.log(raw)
+const goToDetail = (type) => {
+  roverCamera(type)
 }
 
 </script>

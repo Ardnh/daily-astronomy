@@ -2,8 +2,8 @@
   <div class="mx-20 my-5">
     <div class="flex flex-wrap py-4 items-center">
       <div class="mx-4 font-nunito text-2xl font-bold">News about space</div>
-      <div class="flex flex-wrap items-center bg-gray-300 px-3 py-2 rounded-md hover:bg-gray-400 cursor-pointer">
-        <img :src="refreshIcon" class="w-5 h-5">
+      <div  @click="refreshNews" class="flex flex-wrap items-center bg-gray-300 px-3 py-2 rounded-md hover:bg-gray-400 cursor-pointer">
+        <img :src="refreshIcon" :class="isLoading ? 'animate-spin' : ''" class="w-5 h-5">
         <div class="ml-3 font-nunito font-bold text-sm">refresh</div>
       </div>
     </div>
@@ -27,13 +27,24 @@ import { useHomeStore } from '../../stores/homeStore'
 
 const router = useRouter()
 const refreshIcon = new URL('../../assets/refresh.svg', import.meta.url).href
-const { goToDetail } = useHomeStore()
+const { goToDetail, refreshRandomNews } = useHomeStore()
 const { getRandomNews } = storeToRefs(useHomeStore())
+
+const isLoading = ref(false)
 
 const showDetailView = (i, title) => {
   let titleModification = title.toLowerCase().replace(/ /g, '-').replace(/[^\w-]+/g, '')
   goToDetail(i)
   router.push({ name: 'detail', params: { slug: titleModification }})
+}
+
+const refreshNews = () => {
+  isLoading.value = !isLoading.value
+  refreshRandomNews()
+    .then(() => {
+      isLoading.value = !isLoading.value
+    })
+    .catch(err => console.log(err))
 }
 
 </script>

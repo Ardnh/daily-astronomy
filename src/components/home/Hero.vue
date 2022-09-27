@@ -26,7 +26,7 @@
                 </div>
                 <div v-else class="flex flex-none md:justify-between rounded-lg content-center">
                     <div>
-                        <div class="text-2xl pt-2 text-slate-700 font-medium font-montserrat">Astronomy Video of The Day (AVOD)</div>
+                        <div class="text-2xl pt-2 text-slate-700 font-medium font-montserrat">Astronomy Video of The Day</div>
                         <div class="mt-20 text-4xl text-gray-600 font-bold font-montserrat">{{ getLatestApod.title }}</div>
                         <div class="text-sm text-gray-500 font-medium font-montserrat">{{ getLatestApod.date }}</div>
                         <button @click="goToDetailView(getLatestApod.title)" class="hover:bg-slate-700 mt-5 font-medium px-4 py-2 bg-slate-800 text-white font montserrat border-none rounded-lg">Learn more</button>

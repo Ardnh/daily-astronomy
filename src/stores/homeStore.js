@@ -25,7 +25,16 @@ export const useHomeStore = defineStore('homeStore',{
             console.log(i)
         },
         async refreshRandomNews(){
-
+            this.randomNews = []
+            console.log("run refersh")
+            const url = `${ this.base_url }/planetary/apod?api_key=${ this.api_key }&count=5`
+            await axios.get(url)
+                    .then( res => {
+                        let randomNewsData = JSON.stringify(res.data)
+                        this.randomNews = res.data
+                        localStorage.setItem('randomNews', randomNewsData)
+                    })
+                    .catch(err => console.log(err))
         },
         async fetchLatestApod(){
             this.latestApod = {}
@@ -40,11 +49,28 @@ export const useHomeStore = defineStore('homeStore',{
                     })
                     .catch(err =>  console.log(err))
             } else {
-                this.latestApod = JSON.parse(localStorage.getItem('latestData'))
+                let checkDate = JSON.parse(localStorage.getItem('latestData'))
+                let date = new Date()
+                let day = date.getDay()
+                let month = date.getMonth() + 1 
+                let year = date.getFullYear()
+                let currentDate = `${year}-${month}-${day}`
+                if( checkDate.date !== currentDate ) {
+                    await axios.get(url)
+                    .then(res => {
+                        let latestData = JSON.stringify(res.data)
+                        this.latestApod = res.data
+                        localStorage.setItem('latestData', latestData)
+                    })
+                    .catch(err =>  console.log(err))
+                } else {
+                    this.latestApod = JSON.parse(localStorage.getItem('latestData'))
+                }
             }
         },
         async fetchRandomNews(){
             this.randomNews = []
+
             const url = `${ this.base_url }/planetary/apod?api_key=${ this.api_key }&count=5`
             if( localStorage.getItem('randomNews') === null ){
                 console.log("fetch random run")
@@ -57,33 +83,16 @@ export const useHomeStore = defineStore('homeStore',{
                     .catch(err => console.log(err))
             } else {
                 this.randomNews = JSON.parse(localStorage.getItem('randomNews'))
-                console.log(state.randomNews)
             }
         },
-        async searchSpace(){
-            this.searchList = []
-            const url = `${ this.base_url }/planetary/apod?api_key=${ this.api_key }&count=5`
-            try {
-                await axios.post(url)
-                        .then( res => {
-                            this.searchList = red.data
-                        })
-                        .catch( err => console.log(err))
-            } catch (error) {
-                console.log(error)
-            }
+        async searchSpace(input){
+            // const url = `${ this.base_url }/planetary/apod?api_key=${ this.api_key }&count=5`
+            console.log(input)
         },
-        async roverCamera(){
-            const url = `${ this.base_url }/planetary/apod?api_key=${ this.api_key }&count=5`
-            try {
-                await axios.post(url)
-                            .then( res => {
-                                // pindah halaman ke discovery
-                            })
-                            .catch(err => console.log(err))
-            } catch (error) {
-                console.log(err)
-            }
+        async roverCamera(input){
+            // const url = `${ this.base_url }/planetary/apod?api_key=${ this.api_key }&count=5`
+            console.log(input)
+            
         }
     }
 })

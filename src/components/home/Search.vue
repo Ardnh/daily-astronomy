@@ -19,7 +19,7 @@ const searchInput =  ref('')
 const isActive = ref(true)
 
 const search = () => {
-    searchSpace(searchInput)
+    searchSpace(searchInput.value)
 }
 
 </script>
